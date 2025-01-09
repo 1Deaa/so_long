@@ -1,42 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_handle.c                                       :+:      :+:    :+:   */
+/*   open.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drahwanj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/08 19:31:48 by drahwanj          #+#    #+#             */
-/*   Updated: 2025/01/08 19:31:49 by drahwanj         ###   ########.fr       */
+/*   Created: 2025/01/09 12:50:38 by drahwanj          #+#    #+#             */
+/*   Updated: 2025/01/09 12:50:39 by drahwanj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-bool	check_extension(const char *filename)
-{
-	char	*extension;
-
-	extension = ft_strrchr(filename, '.');
-	if (!extension)
-	{
-		ft_printf("Error Invalid file extension!\n");
-		return (false);
-	}
-	if (ft_strcmp(extension, ".ber"))
-	{
-		ft_printf("Error Invalid file extension!\n");
-		return (false);
-	}
-	return (true);
-}
-
-bool	file_exist(const char *filename)
+int	open_file(const char *filename, int o_flag)
 {
 	int	fd;
 
-	fd = open_file(filename, O_RDONLY);
+	fd = open(filename, o_flag);
 	if (fd == -1)
-		return (false);
-	close(fd);
-	return (true);
+	{
+		perror("Could not open file!");
+	}
+	return (fd);
 }

@@ -14,10 +14,11 @@
 
 int	main(int argc, char *argv[])
 {
-	t_map	map;
-	char	*filename;
+	t_map		map;
+	char		*filename;
+	size_t		i;
 
-	int i = 0;
+	i = 0;
 	filename = argv[1];
 	map.rows = 0;
 	map.cols = 0;
@@ -25,16 +26,20 @@ int	main(int argc, char *argv[])
 	if (argc != 2)
 	{
 		ft_printf("Usage: ./so_long [map.ber]\n");
-		return (1);
+		exit(EXIT_FAILURE);
 	}
-	if (file_exist(filename) && check_extension(filename))
+	if (!(file_exist(filename) && check_extension(filename)))
 	{
-		ft_printf("File is valid!\n");
+		ft_printf("File is invalid!\n");
+		exit(EXIT_FAILURE);
 	}
-	map.matrix = allocate_matrix(&map, filename);
+	map_init(&map, filename);
+	ft_printf("Map rows: %d\n", map.rows);
+	ft_printf("Map cols: %d\n", map.cols);
+	map_handle(&map);
 	while (i < map.rows)
 	{
-		//ft_printf("%s\n", map.matrix[i]);
+		ft_printf("%s", map.matrix[i]);
 		free(map.matrix[i]);
 		i++;
 	}

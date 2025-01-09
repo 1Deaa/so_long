@@ -12,15 +12,16 @@
 
 #include "so_long.h"
 
-void	count_rows(t_map *map, char *filename)
+size_t	count_rows(char *filename)
 {
 	int		fd;
 	char	*line;
+	size_t	i;
 
-	fd = open(filename, O_RDONLY);
+	i = 0;
+	fd = open_file(filename, O_RDONLY);
 	if (fd == -1)
 	{
-		perror("Could not open file!");
 		exit(EXIT_FAILURE);
 	}
 	line = get_next_line(fd);
@@ -28,10 +29,28 @@ void	count_rows(t_map *map, char *filename)
 	{
 		free(line);
 		line = get_next_line(fd);
-		map->rows++;
+		i++;
 	}
 	close(fd);
 	free(line);
+	return (i);
+}
+
+void	fail_deallocate_matrix(char **matrix, int fd)
+{
+	int	i;
+
+	i = 0;
+	while (matrix[i])
+	{
+		free(matrix[i]);
+		i++;
+	}
+	perror("Failed to allocate memory!");
+	free(matrix);
+	if (fd != -1)
+		close(fd);
+	exit(EXIT_FAILURE);
 }
 
 char	**allocate_matrix(t_map *map, char *filename)
@@ -42,33 +61,43 @@ char	**allocate_matrix(t_map *map, char *filename)
 	int		i;
 
 	i = 0;
-	count_rows(map, filename);
-	fd = open(filename, O_RDONLY);
+	fd = open_file(filename, O_RDONLY);
+	matrix = (char **)malloc(sizeof(char *) * (map->rows));
+	if (!matrix)
+		fail_deallocate_matrix(matrix, fd);
+	line = get_next_line(fd);
+	while (line)
+	{
+		matrix[i++] = (char *)malloc(sizeof(char) * (ft_strlen(line) + 1));
+		free(line);
+		if (!matrix[i - 1])
+			fail_deallocate_matrix(matrix, fd);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (matrix);
+}
+
+void	fill_map(t_map *map, char *filename)
+{
+	int		fd;
+	char	*line;
+	int		i;
+
+	i = 0;
+	fd = open_file(filename, O_RDONLY);
 	if (fd == -1)
 	{
-		perror("Could not open file!");
 		exit(EXIT_FAILURE);
-	}
-	matrix = (char **)malloc(sizeof(char *) * (map->rows));
-	ft_printf("Rows: %d\n", map->rows);
-	if (!matrix)
-	{
-		perror("Could not allocate memory!");
-		exit(EXIT_FAILURE);
+		fail_deallocate_matrix(map->matrix, fd);
 	}
 	line = get_next_line(fd);
 	while (line)
 	{
-		matrix[i] = malloc(sizeof(char) * (ft_strlen(line) + 1));
+		ft_strcpy(map->matrix[i], line);
 		free(line);
 		line = get_next_line(fd);
 		i++;
 	}
 	close(fd);
-	return (matrix);
 }
-/*
-char	**fill_map(t_map *map, char *filename)
-{
-}
-*/

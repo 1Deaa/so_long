@@ -31,23 +31,34 @@
 typedef struct s_map
 {
 	char	**matrix;
-	int		rows;
-	int		cols;
+	size_t	rows;
+	size_t	cols;
 }	t_map;
 
-//LIBFT
+//LIBFT TOOLS
 size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char *str1, char *str2);
 int		ft_strcmp(const char *str1, const char *str2);
 char	*ft_strrchr(const char *str, int c);
+char	*ft_strcpy(char *dest, const char *src);
+int		open_file(const char *filename, int o_flag);
 
-//SO_LONG
+//FILE_HANDLE.C
 bool	file_exist(const char *filename);
-bool   check_extension(const char *filename);
+bool	check_extension(const char *filename);
+
+//GET_NEXT_LINE.C
 char	*get_next_line(int fd);
 char	*check_for_newline(char *str);
-void		count_rows(t_map *map, char *filename);
-char  **fill_map(t_map *map, char *filename);
+
+//FILL_MAP.C
+size_t	count_rows(char *filename);
 char	**allocate_matrix(t_map *map, char *filename);
+void	fill_map(t_map *map, char *filename);
+void	fail_deallocate_matrix(char **matrix, int fd);
+
+//MAP
+void	map_init(t_map *map, char *filename);
+void	map_handle(t_map *map);
 
 #endif

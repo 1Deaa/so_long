@@ -1,47 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_handle.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drahwanj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/08 21:02:20 by drahwanj          #+#    #+#             */
-/*   Updated: 2025/01/08 21:02:21 by drahwanj         ###   ########.fr       */
+/*   Created: 2025/01/09 13:46:16 by drahwanj          #+#    #+#             */
+/*   Updated: 2025/01/09 13:46:16 by drahwanj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-bool	is_rectangular(t_map *map)
+char	*ft_strcpy(char *dest, const char *src)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < map->rows - 1)
+	while (src[i] != '\0')
 	{
-		if ((ft_strlen(map->matrix[i]) != map->cols))
-			return (false);
+		dest[i] = src[i];
 		i++;
 	}
-	if (ft_strlen(map->matrix[map->rows - 1]) != map->cols - 1)
-		return (false);
-	return (true);
-}
-
-void	map_handle(t_map *map)
-{
-	size_t	i;
-
-	i = 0;
-	if (!is_rectangular(map))
-	{
-		ft_printf("Incorrect map format!\n");
-		while (i < map->rows)
-		{
-			free(map->matrix[i]);
-			i++;
-		}
-		free(map->matrix);
-		exit(EXIT_FAILURE);
-	}
+	dest[i] = '\0';
+	return (dest);
 }
