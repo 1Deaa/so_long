@@ -37,11 +37,7 @@ BLINK = \e[5m
 # START HERE |
 #            v
 
-all: $(HEADER) $(NAME) 
-
-$(HEADER): 
-	@echo "$(RED)█▀▀ ▀█▀ ▄▄ █▀█ █▀█ █ █▄ █ ▀█▀ █▀▀"
-	@echo "$(RED)█▀   █     █▀▀ █▀▄ █ █ ▀█  █  █▀ $(RESET)"
+all: $(NAME) 
 
 $(NAME): $(OBJS)
 	@$(AR) $(NAME) $(OBJS)
@@ -57,7 +53,7 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "$(WHITE)·$(RED) library file was deleted!$(RESET)"
+	@echo "$(WHITE)·$(RED) $(NAME) was deleted!$(RESET)"
 
 re: fclean all
 
