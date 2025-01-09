@@ -12,31 +12,12 @@
 
 #include "so_long.h"
 
-bool	check_extension(const char *filename)
+void	file_handle(const char *filename)
 {
-	char	*extension;
-
-	extension = ft_strrchr(filename, '.');
-	if (!extension)
+	if (!(file_exist(filename) && check_extension(filename)
+			&& !is_file_empty(filename)))
 	{
-		ft_printf("Error Invalid file extension!\n");
-		return (false);
+		ft_printf("File is invalid!\n");
+		exit(EXIT_FAILURE);
 	}
-	if (ft_strcmp(extension, ".ber"))
-	{
-		ft_printf("Error Invalid file extension!\n");
-		return (false);
-	}
-	return (true);
-}
-
-bool	file_exist(const char *filename)
-{
-	int	fd;
-
-	fd = open_file(filename, O_RDONLY);
-	if (fd == -1)
-		return (false);
-	close(fd);
-	return (true);
 }

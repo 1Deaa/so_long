@@ -2,8 +2,8 @@
 NAME = so_long
 
 #PROJECT FILES
-FILES = so_long.c file_handle.c tools/ft_strlen.c get_next_line.c get_next_line_utils.c tools/ft_strrchr.c tools/ft_strcmp.c \
-		fill_map.c tools/open_file.c tools/ft_strcpy.c map_init.c map_handle.c
+FILES = so_long.c file_handle.c tools/ft_strlen.c get_next_line.c get_next_line_util.c tools/ft_strrchr.c tools/ft_strcmp.c \
+		fill_map.c tools/open_file.c tools/ft_strcpy.c map_init.c map_handle.c map_handle_util.c file_handle_util.c \
 #PROJECT DIRECTORIES
 SRCS_DIR = src
 SRCS = $(addprefix $(SRCS_DIR)/, $(FILES))

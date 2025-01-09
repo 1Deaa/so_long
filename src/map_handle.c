@@ -12,36 +12,13 @@
 
 #include "so_long.h"
 
-bool	is_rectangular(t_map *map)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < map->rows - 1)
-	{
-		if ((ft_strlen(map->matrix[i]) != map->cols))
-			return (false);
-		i++;
-	}
-	if (ft_strlen(map->matrix[map->rows - 1]) != map->cols - 1)
-		return (false);
-	return (true);
-}
-
 void	map_handle(t_map *map)
 {
-	size_t	i;
-
-	i = 0;
-	if (!is_rectangular(map))
+	if (!is_rectangular(map) || !is_walled(map)
+		|| !is_valid_map(map) || !check_e_p_c(map))
 	{
 		ft_printf("Incorrect map format!\n");
-		while (i < map->rows)
-		{
-			free(map->matrix[i]);
-			i++;
-		}
-		free(map->matrix);
+		free_map(map);
 		exit(EXIT_FAILURE);
 	}
 }

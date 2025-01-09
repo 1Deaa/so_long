@@ -14,6 +14,9 @@
 
 void	map_init(t_map *map, char *filename)
 {
+	map->collectible = 0;
+	map->exit = 0;
+	map->player = 0;
 	map->rows = count_rows(filename);
 	map->matrix = allocate_matrix(map, filename);
 	fill_map(map, filename);
