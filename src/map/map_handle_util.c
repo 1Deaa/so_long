@@ -17,14 +17,14 @@ bool	is_rectangular(t_map *map)
 	size_t	i;
 
 	i = 0;
-	while (i < map->rows - 1)
+	while (i < map->rows)
 	{
 		if ((ft_strlen(map->matrix[i]) != map->cols))
 			return (false);
 		i++;
 	}
-	if (ft_strlen(map->matrix[map->rows - 1]) != map->cols - 1)
-		return (false);
+	//if (ft_strlen(map->matrix[map->rows - 1]) != map->cols - 1)
+		//return (false);
 	return (true);
 }
 

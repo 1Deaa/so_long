@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drahwanj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -16,9 +16,7 @@ int	main(int argc, char *argv[])
 {
 	t_map		map;
 	char		*filename;
-	size_t		i;
 
-	i = 0;
 	filename = argv[1];
 	if (argc != 2)
 	{
@@ -28,11 +26,5 @@ int	main(int argc, char *argv[])
 	file_handle(filename);
 	map_init(&map, filename);
 	map_handle(&map);
-	while (i < map.rows)
-	{
-		ft_printf("%s", map.matrix[i]);
-		free(map.matrix[i]);
-		i++;
-	}
-	free(map.matrix);
+	free_map(&map);
 }

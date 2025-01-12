@@ -4,7 +4,9 @@ NAME = so_long
 #PROJECT FILES
 FILES = gnl/get_next_line.c gnl/get_next_line_util.c \
 		tools/ft_strcmp.c tools/ft_strlen.c tools/ft_strrchr.c tools/open_file.c tools/ft_strcpy.c \
-		file_handle.c file_handle_util.c fill_map.c map_handle.c map_handle_util.c map_init.c so_long.c
+		map/map_handle.c map/map_handle_util.c map/map_init.c map/fill_map.c main.c \
+		file/file_handle.c file/file_handle_util.c 
+
 #PROJECT DIRECTORIES
 SRCS_DIR = src
 SRCS = $(addprefix $(SRCS_DIR)/, $(FILES))
@@ -58,7 +60,6 @@ fclean:
 	@make -C ft_printf fclean
 	@$(RM) $(OBJS) $(NAME)
 	@echo "$(WHITE)·$(RED) ./$(NAME) was deleted!$(RESET)"
-
 
 re: fclean all
 
