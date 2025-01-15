@@ -47,19 +47,6 @@ bool	is_walled(t_map *map)
 	return (true);
 }
 
-void	free_map(t_map *map)
-{
-	int	i;
-
-	i = 0;
-	while (i < map->rows)
-	{
-		free(map->matrix[i]);
-		i++;
-	}
-	free(map->matrix);
-}
-
 bool	is_valid_map(t_map *map)
 {
 	int	i;
@@ -95,4 +82,22 @@ bool	check_e_p_c(t_map *map)
 		return (false);
 	}
 	return (true);
+}
+
+bool	is_playable(t_map *map)
+{
+	char	**map_copy;
+	int		temp_collectible;
+
+	temp_collectible = map->collectible;
+	map_copy = duplicate_map(map->matrix, map->rows);
+	flood_fill(map, map_copy);
+	free_matrix(map_copy, map->rows);
+	if (map->collectible == 0 && map->exit == 0)
+	{
+		map->collectible = temp_collectible;
+		map->exit = 1;
+		return (true);
+	}
+	return (false);
 }

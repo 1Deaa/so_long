@@ -44,6 +44,6 @@ void	matrix_init(t_map *map, char *filename)
 	map->matrix = allocate_matrix(map, filename);
 	fill_map(map, filename);
 	map->cols = (ft_strlen(map->matrix[0]) - 1);
-	map_handle(map);
 	assign_player_cord(map);
+	map_handle(map);
 }
