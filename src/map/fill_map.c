@@ -12,11 +12,11 @@
 
 #include "so_long.h"
 
-size_t	count_rows(char *filename)
+int	count_rows(char *filename)
 {
 	int		fd;
 	char	*line;
-	size_t	i;
+	int	i;
 
 	i = 0;
 	fd = open_file(filename, O_RDONLY);

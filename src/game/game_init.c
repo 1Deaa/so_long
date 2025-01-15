@@ -57,7 +57,25 @@ void	window_init(t_game *game)
 	}
 }
 
-void	placetiles(t_game *game, size_t x, size_t y)
+void	placetiles(t_game *game, int x, int y)
+{
+	mlx_put_image_to_window(game->mlx, game->win, game->img_floor,
+		game->on_screen_x, game->on_screen_y);
+	if (game->map.matrix[y][x] == '1')
+		mlx_put_image_to_window(game->mlx, game->win, game->img_wall,
+			game->on_screen_x, game->on_screen_y);
+	if (game->map.matrix[y][x] == 'P')
+		mlx_put_image_to_window(game->mlx, game->win, game->img_player,
+			game->on_screen_x, game->on_screen_y);
+	if (game->map.matrix[y][x] == 'E')
+		mlx_put_image_to_window(game->mlx, game->win, game->img_exit,
+			game->on_screen_x, game->on_screen_y);
+	if (game->map.matrix[y][x] == 'C')
+		mlx_put_image_to_window(game->mlx, game->win, game->img_collect,
+			game->on_screen_x, game->on_screen_y);
+}
+
+/*void	placetiles(t_game *game, int x, int y)
 {
 	if (game->map.matrix[y][x] == '1')
 		mlx_put_image_to_window(game->mlx, game->win, game->img_wall,
@@ -74,12 +92,12 @@ void	placetiles(t_game *game, size_t x, size_t y)
 	else if (game->map.matrix[y][x] == 'C')
 		mlx_put_image_to_window(game->mlx, game->win, game->img_collect,
 			game->on_screen_x, game->on_screen_y);
-}
+}*/
 
 void	render_map(t_game *game)
 {
-	size_t		x_pos;
-	size_t		y_pos;
+	int		x_pos;
+	int		y_pos;
 
 	y_pos = 0;
 	while (y_pos < game->map.rows)

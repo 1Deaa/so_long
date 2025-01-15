@@ -14,7 +14,7 @@
 
 bool	is_rectangular(t_map *map)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (i < map->rows)
@@ -28,7 +28,7 @@ bool	is_rectangular(t_map *map)
 
 bool	is_walled(t_map *map)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (map->matrix[0][i] != '\n')
@@ -49,7 +49,7 @@ bool	is_walled(t_map *map)
 
 void	free_map(t_map *map)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (i < map->rows)
@@ -62,8 +62,8 @@ void	free_map(t_map *map)
 
 bool	is_valid_map(t_map *map)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < map->rows)

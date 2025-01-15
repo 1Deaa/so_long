@@ -14,8 +14,8 @@
 
 void	assign_player_cord(t_map *map)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < map->rows)

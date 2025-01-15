@@ -16,13 +16,13 @@
 typedef struct s_map
 {
 	char	**matrix;
-	size_t	player_x;
-	size_t	player_y;
-	size_t	player;
-	size_t	exit;
-	size_t	collectible;
-	size_t	rows;
-	size_t	cols;
+	int	player_x;
+	int	player_y;
+	int	player;
+	int	exit;
+	int	collectible;
+	int	rows;
+	int	cols;
 }	t_map;
 
 typedef struct s_game
@@ -34,9 +34,9 @@ typedef struct s_game
 	void	*img_exit;
 	void	*img_collect;
 	void	*img_floor;
-	size_t		moves;
-	size_t		on_screen_x;
-	size_t		on_screen_y;
+	int		moves;
+	int		on_screen_x;
+	int		on_screen_y;
 	t_map	map;
 }	t_game;
 

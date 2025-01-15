@@ -33,13 +33,13 @@
 # include "structure.h"
 
 //LIBFT TOOLS
-size_t	ft_strlen(const char *str);
+int		ft_strlen(const char *str);
 char	*ft_strjoin(char *str1, char *str2);
 int		ft_strcmp(const char *str1, const char *str2);
 char	*ft_strrchr(const char *str, int c);
 char	*ft_strcpy(char *dest, const char *src);
 int		open_file(const char *filename, int o_flag);
-void	*ft_memset(void *s, int c, size_t n);
+void	*ft_memset(void *s, int c, int n);
 
 //FILE_HANDLE_UTIL.C
 bool	file_exist(const char *filename);
@@ -54,7 +54,7 @@ char	*get_next_line(int fd);
 char	*check_for_newline(char *str);
 
 //FILL_MAP.C
-size_t	count_rows(char *filename);
+int		count_rows(char *filename);
 char	**allocate_matrix(t_map *map, char *filename);
 void	fill_map(t_map *map, char *filename);
 void	fail_deallocate_matrix(char **matrix, int fd);
@@ -74,7 +74,7 @@ bool	is_rectangular(t_map *map);
 void	window_init(t_game *game);
 void	img_init(t_game *game);
 void	render_map(t_game *game);
-void	placetiles(t_game *game, size_t x, size_t y);
+void	placetiles(t_game *game, int x, int y);
 
 //MOVMEMENT_SYSTEM.C
 int		key_hook(int keycode, t_game *game);

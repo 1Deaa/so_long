@@ -14,7 +14,7 @@
 
 int	ft_strcmp(const char *str1, const char *str2)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if (!str1)

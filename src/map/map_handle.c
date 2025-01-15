@@ -18,6 +18,7 @@ void	map_handle(t_map *map)
 		|| !is_valid_map(map) || !check_e_p_c(map))
 	{
 		free_map(map);
+		ft_printf("Invalid map!\n");
 		exit(EXIT_FAILURE);
 	}
 }
