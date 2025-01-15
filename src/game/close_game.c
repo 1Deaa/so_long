@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_handle.c                                       :+:      :+:    :+:   */
+/*   close_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drahwanj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/08 21:02:20 by drahwanj          #+#    #+#             */
-/*   Updated: 2025/01/08 21:02:21 by drahwanj         ###   ########.fr       */
+/*   Created: 2025/01/13 19:00:28 by drahwanj          #+#    #+#             */
+/*   Updated: 2025/01/13 19:00:28 by drahwanj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	map_handle(t_map *map)
+int	close_game(t_game *game)
 {
-	if (!is_rectangular(map) || !is_walled(map)
-		|| !is_valid_map(map) || !check_e_p_c(map))
-	{
-		free_map(map);
-		exit(EXIT_FAILURE);
-	}
+	clean_game(game);
+	exit(EXIT_SUCCESS);
+	return (0);
 }

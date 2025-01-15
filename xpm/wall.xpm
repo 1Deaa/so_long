@@ -1,5 +1,5 @@
 /* XPM */
-static char *_8ead2faabb74a8dcba7952befd7f56f6T1HXTJ7W0kAeM60[] = {
+static const char *wall[] = {
 /* columns rows colors chars-per-pixel */
 "64 64 7 1 ",
 "  c #231C19",

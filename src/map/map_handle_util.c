@@ -19,12 +19,10 @@ bool	is_rectangular(t_map *map)
 	i = 0;
 	while (i < map->rows)
 	{
-		if ((ft_strlen(map->matrix[i]) != map->cols))
+		if (((ft_strlen(map->matrix[i]) - 1) != map->cols))
 			return (false);
 		i++;
 	}
-	//if (ft_strlen(map->matrix[map->rows - 1]) != map->cols - 1)
-		//return (false);
 	return (true);
 }
 
@@ -42,7 +40,7 @@ bool	is_walled(t_map *map)
 	i = 0;
 	while (i < map->rows)
 	{
-		if (map->matrix[i][0] != '1' || map->matrix[i][map->cols - 2] != '1')
+		if (map->matrix[i][0] != '1' || map->matrix[i][map->cols - 1] != '1')
 			return (false);
 		i++;
 	}
@@ -71,7 +69,7 @@ bool	is_valid_map(t_map *map)
 	while (i < map->rows)
 	{
 		j = 0;
-		while (j < map->cols - 1)
+		while (j < map->cols)
 		{
 			if (map->matrix[i][j] != '1' && map->matrix[i][j] != '0' &&
 				map->matrix[i][j] != 'P' && map->matrix[i][j] != 'E' &&

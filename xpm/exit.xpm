@@ -1,5 +1,5 @@
 /* XPM */
-static char *_17ba829eeb44f3aa8094c6a65524752V2sPWGkc6lMFmz1C[] = {
+static const char *exit[] = {
 /* columns rows colors chars-per-pixel */
 "64 64 6 1 ",
 "  c #120C0A",

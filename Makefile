@@ -3,9 +3,10 @@ NAME = so_long
 
 #PROJECT FILES
 FILES = gnl/get_next_line.c gnl/get_next_line_util.c \
-		tools/ft_strcmp.c tools/ft_strlen.c tools/ft_strrchr.c tools/open_file.c tools/ft_strcpy.c \
-		map/map_handle.c map/map_handle_util.c map/map_init.c map/fill_map.c main.c \
-		file/file_handle.c file/file_handle_util.c 
+		tools/ft_strcmp.c tools/ft_strlen.c tools/ft_strrchr.c tools/open_file.c tools/ft_strcpy.c tools/ft_memset.c \
+		map/map_handle.c map/map_handle_util.c map/matrix_init.c map/fill_map.c main.c \
+		file/file_handle.c file/file_handle_util.c \
+		game/game_init.c game/game_loop.c game/movement_system.c game/clean_game.c game/close_game.c
 
 #PROJECT DIRECTORIES
 SRCS_DIR = src

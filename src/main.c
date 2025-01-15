@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drahwanj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,7 +14,7 @@
 
 int	main(int argc, char *argv[])
 {
-	t_map		map;
+	t_game	game;
 	char		*filename;
 
 	filename = argv[1];
@@ -24,7 +24,16 @@ int	main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	file_handle(filename);
-	map_init(&map, filename);
-	map_handle(&map);
-	free_map(&map);
+	ft_memset(&game, 0, sizeof(t_game));
+	ft_memset(&(game.map), 0, sizeof(t_map));
+	matrix_init(&(game.map), filename);
+	window_init(&game);
+	img_init(&game);
+	render_map(&game);
+	mlx_hook(game.win, DestroyNotify, StructureNotifyMask, close_game, &game);
+	mlx_hook(game.win, KeyPress, KeyPressMask, key_hook, &game);
+	mlx_loop_hook(game.mlx, game_loop, &game);
+	mlx_loop(game.mlx);
+	clean_game(&game);
+	return (0);
 }

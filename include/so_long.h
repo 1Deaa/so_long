@@ -17,8 +17,10 @@
 #  define BUFFER_SIZE 32
 # endif
 
-# include <../mlx_linux/mlx.h>
-# include <../ft_printf/ft_printf.h>
+# define BLOCK_SIZE 64
+
+# include <mlx.h>
+# include "../ft_printf/ft_printf.h"
 # include <fcntl.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
@@ -27,16 +29,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-//STRUCTURE
-typedef struct s_map
-{
-	char	**matrix;
-	size_t	player;
-	size_t	exit;
-	size_t	collectible;
-	size_t	rows;
-	size_t	cols;
-}	t_map;
+//STRUCTURES
+# include "structure.h"
 
 //LIBFT TOOLS
 size_t	ft_strlen(const char *str);
@@ -45,6 +39,7 @@ int		ft_strcmp(const char *str1, const char *str2);
 char	*ft_strrchr(const char *str, int c);
 char	*ft_strcpy(char *dest, const char *src);
 int		open_file(const char *filename, int o_flag);
+void	*ft_memset(void *s, int c, size_t n);
 
 //FILE_HANDLE_UTIL.C
 bool	file_exist(const char *filename);
@@ -65,7 +60,7 @@ void	fill_map(t_map *map, char *filename);
 void	fail_deallocate_matrix(char **matrix, int fd);
 
 //MAP
-void	map_init(t_map *map, char *filename);
+void	matrix_init(t_map *map, char *filename);
 void	map_handle(t_map *map);
 
 //MAP_HANDLE_UTIL.C
@@ -74,5 +69,21 @@ bool	is_valid_map(t_map *map);
 void	free_map(t_map *map);
 bool	is_walled(t_map *map);
 bool	is_rectangular(t_map *map);
+
+//GAME
+void	window_init(t_game *game);
+void	img_init(t_game *game);
+void	render_map(t_game *game);
+void	placetiles(t_game *game, size_t x, size_t y);
+
+//MOVMEMENT_SYSTEM.C
+int		key_hook(int keycode, t_game *game);
+void	move_player(t_game *game, int x, int y);
+int		check_player_move(t_game *game, int new_x, int new_y);
+int		game_loop(t_game *game);
+
+//CLEAN
+void	clean_game(t_game *game);
+int		close_game(t_game *game);
 
 #endif

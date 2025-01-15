@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_init.c                                         :+:      :+:    :+:   */
+/*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drahwanj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 14:19:51 by drahwanj          #+#    #+#             */
-/*   Updated: 2025/01/09 14:19:52 by drahwanj         ###   ########.fr       */
+/*   Created: 2025/01/13 18:31:33 by drahwanj          #+#    #+#             */
+/*   Updated: 2025/01/13 18:31:34 by drahwanj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	map_init(t_map *map, char *filename)
+int	game_loop(t_game *game)
 {
-	map->collectible = 0;
-	map->exit = 0;
-	map->player = 0;
-	map->rows = count_rows(filename);
-	map->matrix = allocate_matrix(map, filename);
-	fill_map(map, filename);
-	map->cols = ft_strlen(map->matrix[0]);
+	render_map(game);
+	return (0);
 }

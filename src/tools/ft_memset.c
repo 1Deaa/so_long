@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_handle.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: drahwanj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/08 21:02:20 by drahwanj          #+#    #+#             */
-/*   Updated: 2025/01/08 21:02:21 by drahwanj         ###   ########.fr       */
+/*   Created: 2025/01/13 19:37:31 by drahwanj          #+#    #+#             */
+/*   Updated: 2025/01/13 19:37:32 by drahwanj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	map_handle(t_map *map)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	if (!is_rectangular(map) || !is_walled(map)
-		|| !is_valid_map(map) || !check_e_p_c(map))
+	size_t	i;
+	char	*ptr;
+
+	ptr = (char *)s;
+	i = 0;
+	while (i < n)
 	{
-		free_map(map);
-		exit(EXIT_FAILURE);
+		ptr[i] = c;
+		i++;
 	}
+	return (s);
 }
