@@ -40,6 +40,7 @@ char	*ft_strrchr(const char *str, int c);
 char	*ft_strcpy(char *dest, const char *src);
 int		open_file(const char *filename, int o_flag);
 void	*ft_memset(void *s, int c, int n);
+char	*ft_strdup(const char *str);
 
 //FILE_HANDLE_UTIL.C
 bool	file_exist(const char *filename);
@@ -62,6 +63,7 @@ void	fail_deallocate_matrix(char **matrix, int fd);
 //MAP
 void	matrix_init(t_map *map, char *filename);
 void	map_handle(t_map *map);
+void	free_matrix(char **matrix, int rows);
 
 //MAP_HANDLE_UTIL.C
 bool	check_e_p_c(t_map *map);
@@ -69,6 +71,12 @@ bool	is_valid_map(t_map *map);
 void	free_map(t_map *map);
 bool	is_walled(t_map *map);
 bool	is_rectangular(t_map *map);
+bool	is_playable(t_map *map);
+
+//FLOOD_FILL H
+void	flood_fill(t_map *map, char **map_dup);
+void	flood_fill_loop(t_map *flood, int x, int y);
+char	**duplicate_map(char **map, int rows);
 
 //GAME
 void	window_init(t_game *game);
