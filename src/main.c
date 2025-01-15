@@ -15,7 +15,7 @@
 int	main(int argc, char *argv[])
 {
 	t_game	game;
-	char		*filename;
+	char	*filename;
 
 	filename = argv[1];
 	if (argc != 2)

@@ -34,7 +34,7 @@ bool	is_file_empty(const char *filename)
 {
 	int		fd;
 	char	buffer;
-	int	bytes_read;
+	int		bytes_read;
 
 	fd = open_file(filename, O_RDONLY);
 	if (fd == -1)

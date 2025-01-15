@@ -16,7 +16,7 @@ int	count_rows(char *filename)
 {
 	int		fd;
 	char	*line;
-	int	i;
+	int		i;
 
 	i = 0;
 	fd = open_file(filename, O_RDONLY);

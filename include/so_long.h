@@ -80,7 +80,6 @@ void	placetiles(t_game *game, int x, int y);
 int		key_hook(int keycode, t_game *game);
 void	move_player(t_game *game, int x, int y);
 int		check_player_move(t_game *game, int new_x, int new_y);
-int		game_loop(t_game *game);
 
 //CLEAN
 void	clean_game(t_game *game);

@@ -67,4 +67,3 @@ void	clean_game(t_game *game)
 	clean_img(game);
 	clean_win(game);
 }
-

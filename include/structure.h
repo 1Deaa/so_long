@@ -16,13 +16,13 @@
 typedef struct s_map
 {
 	char	**matrix;
-	int	player_x;
-	int	player_y;
-	int	player;
-	int	exit;
-	int	collectible;
-	int	rows;
-	int	cols;
+	int		player_x;
+	int		player_y;
+	int		player;
+	int		exit;
+	int		collectible;
+	int		rows;
+	int		cols;
 }	t_map;
 
 typedef struct s_game
