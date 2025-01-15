@@ -19,7 +19,7 @@
 
 # define BLOCK_SIZE 64
 
-# include <mlx.h>
+# include "../mlx_linux/mlx.h"
 # include "../ft_printf/ft_printf.h"
 # include <fcntl.h>
 # include <X11/X.h>
