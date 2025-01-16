@@ -18,7 +18,7 @@ void	flood_fill(t_map *map, char **map_dup)
 
 	flood = *map;
 	flood.matrix = map_dup;
-	flood_fill_loop(&flood, flood.player_x, flood.player_y);
+	flood_fill_loop(&flood, flood.player_y, flood.player_x);
 	map->collectible = flood.collectible;
 	map->exit = flood.exit;
 }
