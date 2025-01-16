@@ -46,7 +46,7 @@ $(NAME): $(OBJS)
 	@make -C ft_printf
 	@echo "$(GREEN)█▀ █▀█    █   █▀█ █▄ █ █▀▀"
 	@echo "$(GREEN)▄█ █▄█ ▄▄ █▄▄ █▄█ █ ▀█ █▄█"
-	@$(CC) $(CFLAGS) $(OBJS) ft_printf/libftprintf.a -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) ft_printf/libftprintf.a -Lmlx -lmlx -lXext -lX11 -o $(NAME)
 	@echo "$(GREEN)✔ $(MAGENTA)created $(GREEN)./so_long $(MAGENTA)succesfully!"
 
 %.o: %.c

@@ -41,6 +41,12 @@ void	fail_deallocate_matrix(char **matrix, int fd)
 	int	i;
 
 	i = 0;
+	if (!matrix)
+	{
+		free(matrix);
+		close(fd);
+		exit(EXIT_FAILURE);
+	}
 	while (matrix[i])
 	{
 		free(matrix[i]);
@@ -66,6 +72,8 @@ char	**allocate_matrix(t_map *map, char *filename)
 	if (!matrix)
 		fail_deallocate_matrix(matrix, fd);
 	line = get_next_line(fd);
+	if (!line)
+		fail_deallocate_matrix(matrix, fd);
 	while (line)
 	{
 		matrix[i++] = (char *)malloc(sizeof(char) * (ft_strlen(line) + 1));
@@ -92,6 +100,8 @@ void	fill_map(t_map *map, char *filename)
 		fail_deallocate_matrix(map->matrix, fd);
 	}
 	line = get_next_line(fd);
+	if (!line)
+		fail_deallocate_matrix(map->matrix, fd);
 	while (line)
 	{
 		ft_strcpy(map->matrix[i], line);

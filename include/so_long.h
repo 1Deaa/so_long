@@ -6,7 +6,7 @@
 /*   By: drahwanj <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:50:08 by drahwanj          #+#    #+#             */
-/*   Updated: 2025/01/08 17:50:09 by drahwanj         ###   ########.fr       */
+/*   Updated: 2025/01/16 14:37:11 by drahwanj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # define BLOCK_SIZE 64
 
-# include "../mlx_linux/mlx.h"
+# include <mlx.h>
 # include "../ft_printf/ft_printf.h"
 # include <fcntl.h>
 # include <X11/X.h>
@@ -91,6 +91,8 @@ int		check_player_move(t_game *game, int new_x, int new_y);
 
 //CLEAN
 void	clean_game(t_game *game);
+void	clean_win(t_game *game);
 int		close_game(t_game *game);
+void	clean_img(t_game *game);
 
 #endif

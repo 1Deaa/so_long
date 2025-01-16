@@ -31,6 +31,7 @@ void	img_init(t_game *game)
 		|| !game->img_exit || !game->img_collect)
 	{
 		ft_printf("Error loading images!\n");
+		clean_game(game);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -53,6 +54,7 @@ void	window_init(t_game *game)
 	if (!game->win)
 	{
 		ft_printf("Error creating window!\n");
+		clean_win(game);
 		exit(EXIT_FAILURE);
 	}
 }
