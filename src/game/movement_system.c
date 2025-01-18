@@ -30,7 +30,7 @@ int	check_player_move(t_game *game, int new_x, int new_y)
 	if (game->map.matrix[new_y][new_x] == 'E' && game->map.collectible > 0)
 	{
 		ft_printf("You need to collect all collectibles!\n");
-		return (1);
+		return (0);
 	}
 	return (0);
 }
@@ -64,6 +64,11 @@ void	move_player(t_game *game, int x, int y)
 		return ;
 	game->map.matrix[game->map.player_y][game->map.player_x] = '0';
 	game->map.matrix[new_y][new_x] = 'P';
+	if (game->map.matrix[game->map.player_y][game->map.player_x] ==
+		game->map.matrix[game->map.exit_y][game->map.exit_x])
+	{
+		game->map.matrix[game->map.player_y][game->map.player_x] = 'E';
+	}
 	game->map.player_x = new_x;
 	game->map.player_y = new_y;
 	game->moves++;

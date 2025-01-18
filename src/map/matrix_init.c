@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void	assign_player_cord(t_map *map)
+void	assign_cord(t_map *map, int *loc_x, int *loc_y, char target)
 {
 	int	i;
 	int	j;
@@ -23,10 +23,10 @@ void	assign_player_cord(t_map *map)
 		j = 0;
 		while (j < map->cols)
 		{
-			if (map->matrix[i][j] == 'P')
+			if (map->matrix[i][j] == target)
 			{
-				map->player_x = j;
-				map->player_y = i;
+				*loc_x = j;
+				*loc_y = i;
 				return ;
 			}
 			j++;
@@ -44,6 +44,7 @@ void	matrix_init(t_map *map, char *filename)
 	map->matrix = allocate_matrix(map, filename);
 	fill_map(map, filename);
 	map->cols = (ft_strlen(map->matrix[0]) - 1);
-	assign_player_cord(map);
+	assign_cord(map, &(map->exit_x), &(map->exit_y), 'E');
+	assign_cord(map, &(map->player_x), &(map->player_y), 'P');
 	map_handle(map);
 }

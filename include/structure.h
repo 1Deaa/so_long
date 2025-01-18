@@ -18,6 +18,8 @@ typedef struct s_map
 	char	**matrix;
 	int		player_x;
 	int		player_y;
+	int		exit_x;
+	int		exit_y;
 	int		player;
 	int		exit;
 	int		collectible;

@@ -14,16 +14,12 @@
 
 void	flood_fill_loop(t_map *flood, int x, int y)
 {
-	if (flood->matrix[x][y] == '1' || flood->matrix[x][y] == 'F' ||
-		flood->matrix[x][y] == 'E')
+	if (flood->matrix[x][y] == '1' || flood->matrix[x][y] == 'F')
 	{
-		if (flood->matrix[x][y] == 'E')
-		{
-			flood->matrix[x][y] = '1';
-			flood->exit = 0;
-		}
 		return ;
 	}
+	if (flood->matrix[x][y] == 'E')
+		flood->exit = 0;
 	if (flood->matrix[x][y] == 'C')
 		flood->collectible--;
 	flood->matrix[x][y] = 'F';
