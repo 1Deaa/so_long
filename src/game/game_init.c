@@ -44,7 +44,7 @@ void	window_init(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 	{
-		ft_printf("Error initializing mlx!\n");
+		ft_printf("Error\n Something went wrong while initializing mlx!\n");
 		exit(EXIT_FAILURE);
 	}
 	game->moves = 0;
@@ -53,7 +53,7 @@ void	window_init(t_game *game)
 	game->win = mlx_new_window(game->mlx, win_width, win_height, "so_long");
 	if (!game->win)
 	{
-		ft_printf("Error creating window!\n");
+		ft_printf("Error\n Unable to create window!\n");
 		clean_win(game);
 		exit(EXIT_FAILURE);
 	}

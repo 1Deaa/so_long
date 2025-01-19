@@ -30,20 +30,20 @@ void	map_handle(t_map *map)
 	if (!is_rectangular(map) || !is_walled(map) || !is_valid_map(map))
 	{
 		free_map(map);
-		ft_printf("Invalid map shape!\n");
+		ft_printf("Error\n Invalid map shape!\n");
 		exit(EXIT_FAILURE);
 	}
 	if (!check_e_p_c(map))
 	{
 		free_map(map);
-		ft_printf("Invalid map! Exit: %d, Player: %d, Collectibles: %d\n",
+		ft_printf("Error\n Invalid map! Exit:%d, Player:%d, Collectibles:%d\n",
 			map->exit, map->player, map->collectible);
 		exit(EXIT_FAILURE);
 	}
 	if (!is_playable(map))
 	{
 		free_map(map);
-		ft_printf("Invalid map! Exit or Collectible is unreachable!\n");
+		ft_printf("Error\n Invalid map! Exit or Collectible is unreachable!\n");
 		exit(EXIT_FAILURE);
 	}
 }
